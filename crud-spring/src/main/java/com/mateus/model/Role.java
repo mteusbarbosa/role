@@ -19,6 +19,7 @@ public class Role {
     @Id
     //Autoincrementa
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //Qual nome quero utilizar no json
     @JsonProperty("_id")
     private Long id;
     

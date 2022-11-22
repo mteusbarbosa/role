@@ -1,3 +1,4 @@
+//Criação do Proxy para burlar o problema com CORS
 const PROXY_CONFIG = [
   {
     context: ['/api'],

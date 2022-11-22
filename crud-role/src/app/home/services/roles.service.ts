@@ -8,13 +8,13 @@ import { Role } from '../model/role.model';
   providedIn: 'root',
 })
 export class RolesService {
-  private readonly API = '/assets/roles.json';
+  private readonly API = 'api/roles';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   list() {
     return this.httpClient
       .get<Role[]>(this.API)
-      .pipe(tap((courses) => console.log(courses)));
+      .pipe(tap((roles) => console.log(roles)));
   }
 }
