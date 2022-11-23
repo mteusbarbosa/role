@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Role } from '../model/role.model';
@@ -14,11 +15,16 @@ export class HomeComponent implements OnInit {
   roles: Observable<Role[]>;
   displayedColumns = ['_id', 'titulo', 'local', 'descricao', 'roleUrl'];
 
-  constructor(private rolesService: RolesService) {
+  constructor(private rolesService: RolesService, private router: Router, private route: ActivatedRoute) {
     this.roles = this.rolesService.list();
   }
 
   ngOnInit(): void {
     /** */
+  }
+
+  //Redirecionamento para formulário de criação
+  onAdd() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 }

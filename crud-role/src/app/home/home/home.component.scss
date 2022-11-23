@@ -3,3 +3,19 @@
   padding: 15px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+.toolbar {
+  flex: 1 1 auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  color: white;
+  background-color: #332F2F;
+}
+.toolbar #nav {
+  font-size: 24px;
+  text-align: end;
+  position: fixed;
+  right: 0;
+  padding-right: 10px;
+}

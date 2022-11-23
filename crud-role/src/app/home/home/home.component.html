@@ -1,3 +1,16 @@
+<mat-toolbar class="toolbar">
+  <span>Role</span>
+  <div id="nav">
+    <a>Pesquisar</a>
+    <span> | </span>
+    <!-- Cadastrar Evento -->
+    <!-- Adicionar um role -->
+    <button mat-button color="warn" (click)="onAdd()">Cadastar Evento</button>
+  </div>
+
+</mat-toolbar>
+
+
 <div class="content" *ngIf="roles | async as role">
   <div fxLayout="row wrap" fxLayoutGap="16px grid" >
     <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let role of role" >
@@ -9,6 +22,14 @@
           <mat-card-subtitle>
             {{ role.local }}
           </mat-card-subtitle>
+          <!-- Editar role -->
+          <button mat-icon-button color="accent" aria-label="Editar role">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <!-- Remover role -->
+          <button mat-icon-button color="accent" aria-label="Remover role">
+            <mat-icon>delete</mat-icon>
+          </button>
         </mat-card-header>
         <img mat-card-image [src]="role.roleUrl" [alt]="role.descricao" />
         <mat-card-content>

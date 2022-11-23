@@ -34,4 +34,5 @@ public class Role {
 
     @Column(length = 200, nullable = false)
     private String roleUrl;
+    
 }
