@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-role-form',
@@ -7,9 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoleFormComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      titulo: [null],
+      local: [null],
+      descricao: [null],
+      roleUrl: [null]
+    });
   }
 
+  ngOnInit(): void {
+    // TODO document why this method 'ngOnInit' is empty
+  }
+
+  onSubmit(){
+
+  }
+
+  onCancel(){
+
+  }
 }
+
+/*
+  _id: string;
+  titulo: string;
+  local: string;
+  descricao: string;
+  roleUrl: string;
+*/

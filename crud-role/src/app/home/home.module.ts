@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
@@ -18,7 +19,8 @@ import { RoleFormComponent } from './role-form/role-form.component';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    AppMaterialModule
+    AppMaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

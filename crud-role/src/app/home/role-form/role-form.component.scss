@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+
+.toolbar {
+  flex: 1 1 auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: 50px;
+  color: white;
+  background-color: #332f2f;
+}
+.toolbar #nav {
+  font-size: 24px;
+  text-align: end;
+  position: fixed;
+  right: 0;
+  padding-right: 10px;
+}
+
+mat-card {
+  max-width: 60%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.full-widht {
+  width: 100%;
+}
+
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}
