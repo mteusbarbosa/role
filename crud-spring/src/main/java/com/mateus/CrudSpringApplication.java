@@ -26,6 +26,10 @@ public class CrudSpringApplication {
 			r.setTitulo("Festa das flores");
 			r.setLocal("Praia de Ponta Negra");
 			r.setDescricao("Festa com muita música e bebida. Venha com seus amigos e se divirta muito!!");
+			r.setCategoria("Festival gastronômico");
+			r.setData("24/12/22");
+			r.setHorario("16:00");
+			r.setValor(30);
 			r.setRoleUrl("https://www.cmu.edu/brand/brand-guidelines/images/colors-carnegie-red-600x600.png");
 
 			roleRepository.save(r);

@@ -17,4 +17,8 @@ export class RolesService {
       .get<Role[]>(this.API)
       .pipe(tap((roles) => console.log(roles)));
   }
+
+  save(record: Role){
+    return this.httpClient.post<Role>(this.API, record);
+  }
 }

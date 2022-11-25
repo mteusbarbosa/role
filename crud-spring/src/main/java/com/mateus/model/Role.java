@@ -29,8 +29,20 @@ public class Role {
     @Column(length = 50, nullable = false)
     private String local;
 
+    @Column(length = 30, nullable = false)
+    private String categoria;
+
     @Column(length = 300, nullable = false)
     private String descricao;
+
+    @Column(length = 10, nullable = false)
+    private String data;
+
+    @Column(length = 10, nullable = false)
+    private String horario;
+
+    @Column(nullable = false)
+    private Number valor;
 
     @Column(length = 200, nullable = false)
     private String roleUrl;

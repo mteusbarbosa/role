@@ -26,4 +26,6 @@ public class RoleController {
     public List<Role> list(){
         return roleRepository.findAll();
     }
+
+    
 }
