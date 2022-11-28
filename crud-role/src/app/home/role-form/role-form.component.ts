@@ -1,5 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { RolesService } from './../services/roles.service';
@@ -10,23 +11,25 @@ import { RolesService } from './../services/roles.service';
   styleUrls: ['./role-form.component.scss'],
 })
 export class RoleFormComponent implements OnInit {
-  form: FormGroup;
+
+  form = this.formBuilder.group({
+    titulo: [''],
+    local: [''],
+    categoria: [''],
+    descricao: [''],
+    data: [''],
+    horario: [''],
+    valor: [1],
+    roleUrl: [''],
+  });
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: NonNullableFormBuilder,
     private service: RolesService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private location: Location
   ) {
-    this.form = this.formBuilder.group({
-      titulo: [null],
-      local: [null],
-      categoria: [null],
-      descricao: [null],
-      data: [null],
-      horario: [null],
-      valor: [null],
-      roleUrl: [null],
-    });
+    //this.form
   }
 
   ngOnInit(): void {
@@ -34,14 +37,22 @@ export class RoleFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service
-      .save(this.form.value)
-      .subscribe((result) => console.log(result), error => this.onError());
+    this.service.save(this.form.value).subscribe(
+      (result) => this.onSuccess(),
+      (error) => this.onError()
+    );
   }
 
-  onCancel() {}
+  onCancel() {
+    this.location.back();
+  }
+
+  private onSuccess() {
+    this.snackBar.open('Curso salvo com sucesso!', '', { duration: 5000 });
+    this.onCancel();
+  }
 
   private onError() {
-    this.snackBar.open('Erro ao salvar curso', '', { duration: 3000 });
+    this.snackBar.open('Erro ao salvar role', '', { duration: 3000 });
   }
 }

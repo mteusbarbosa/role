@@ -35,7 +35,7 @@ public class Role {
     @Column(length = 300, nullable = false)
     private String descricao;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 30, nullable = false)
     private String data;
 
     @Column(length = 10, nullable = false)

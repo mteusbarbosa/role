@@ -18,7 +18,7 @@ export class RolesService {
       .pipe(tap((roles) => console.log(roles)));
   }
 
-  save(record: Role){
+  save(record: Partial<Role>){
     return this.httpClient.post<Role>(this.API, record);
   }
 }
