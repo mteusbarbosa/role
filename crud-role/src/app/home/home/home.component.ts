@@ -13,17 +13,7 @@ import { RolesService } from './../services/roles.service';
 export class HomeComponent implements OnInit {
   //Precisa inicializar no construtor
   roles: Observable<Role[]>;
-  displayedColumns = [
-    '_id',
-    'titulo',
-    'local',
-    'categoria',
-    'descricao',
-    'data',
-    'horario',
-    'valor',
-    'roleUrl',
-  ];
+  
 
   constructor(
     private rolesService: RolesService,

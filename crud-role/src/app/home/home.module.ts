@@ -7,13 +7,15 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home/home.component';
 import { RoleFormComponent } from './role-form/role-form.component';
+import { RoleListComponent } from './role-list/role-list.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    RoleFormComponent
+    RoleFormComponent,
+    RoleListComponent
   ],
   imports: [
     CommonModule,

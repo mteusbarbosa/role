@@ -1,0 +1,17 @@
+mat-card {
+  min-height: 300px;
+}
+
+mat-card img{
+  object-fit: cover;
+  height: 300px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.descricao{
+  min-height: 50px;
+  max-height: 100px;
+}
