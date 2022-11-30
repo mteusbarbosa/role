@@ -1,4 +1,4 @@
-import { Role } from './../model/role.model';
+import { Role } from '../../model/role.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

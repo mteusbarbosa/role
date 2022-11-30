@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { Role } from '../model/role.model';
-import { RolesService } from './../services/roles.service';
+import { Role } from '../../model/role.model';
+import { RolesService } from '../../services/roles.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ import { RolesService } from './../services/roles.service';
 export class HomeComponent implements OnInit {
   //Precisa inicializar no construtor
   roles: Observable<Role[]>;
-  
+
 
   constructor(
     private rolesService: RolesService,

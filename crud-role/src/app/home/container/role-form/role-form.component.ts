@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { RolesService } from './../services/roles.service';
+import { RolesService } from '../../services/roles.service';
 
 @Component({
   selector: 'app-role-form',
