@@ -1,7 +1,9 @@
+import { Role } from './../../model/role.model';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
 import { RolesService } from '../../services/roles.service';
 
@@ -11,8 +13,8 @@ import { RolesService } from '../../services/roles.service';
   styleUrls: ['./role-form.component.scss'],
 })
 export class RoleFormComponent implements OnInit {
-
   form = this.formBuilder.group({
+    _id: [''],
     titulo: [''],
     local: [''],
     categoria: [''],
@@ -27,18 +29,33 @@ export class RoleFormComponent implements OnInit {
     private formBuilder: NonNullableFormBuilder,
     private service: RolesService,
     private snackBar: MatSnackBar,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
   ) {
     //this.form
   }
 
   ngOnInit(): void {
-    // TODO document why this method 'ngOnInit' is empty
+    //Edição de um role
+    const role: Role = this.route.snapshot.data['role'];
+    this.form.setValue({
+      _id: role._id,
+      titulo:  role.titulo,
+      local:  role.local,
+      categoria:  role.categoria,
+      descricao:  role.descricao,
+      data:  role.data,
+      horario:  role.horario,
+      valor: role.valor,
+      roleUrl: role.roleUrl
+    })
   }
 
   onSubmit() {
-    this.service.save(this.form.value)
-    .subscribe(result => this.onSuccess(), error => this.onError());
+    this.service.save(this.form.value).subscribe(
+      (result) => this.onSuccess(),
+      (error) => this.onError()
+    );
   }
 
   onCancel() {
