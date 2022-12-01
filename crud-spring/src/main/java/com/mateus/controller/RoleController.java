@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -37,7 +38,7 @@ public class RoleController {
     @GetMapping("/{id}")
     public ResponseEntity<Role> findById(@PathVariable Long id) {
         return roleRepository.findById(id)
-                .map(record -> ResponseEntity.ok().body(record))
+                .map(recordFound -> ResponseEntity.ok().body(recordFound))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -46,8 +47,24 @@ public class RoleController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public Role create(@RequestBody Role role) {
         return roleRepository.save(role);
-        // return
-        // ResponseEntity.status(HttpStatus.CREATED).body(roleRepository.save(role));
     }
 
+    //Atualização do role
+    @PutMapping("/{id}")
+    public ResponseEntity<Role> update(@PathVariable Long id, @RequestBody Role role){
+        return roleRepository.findById(id)
+                .map(recordFound -> {
+                    recordFound.setTitulo(role.getTitulo());
+                    recordFound.setLocal(role.getLocal());
+                    recordFound.setCategoria(role.getCategoria());
+                    recordFound.setDescricao(role.getDescricao());
+                    recordFound.setData(role.getData());
+                    recordFound.setHorario(role.getHorario());
+                    recordFound.setValor(role.getValor());
+                    recordFound.setRoleUrl(role.getRoleUrl());
+                    Role updated = roleRepository.save(recordFound);
+                    return ResponseEntity.ok().body(updated);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

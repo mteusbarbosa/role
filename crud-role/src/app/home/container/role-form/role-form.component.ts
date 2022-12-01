@@ -70,4 +70,6 @@ export class RoleFormComponent implements OnInit {
   private onError() {
     this.snackBar.open('Erro ao salvar role', '', { duration: 3000 });
   }
+
+  
 }
