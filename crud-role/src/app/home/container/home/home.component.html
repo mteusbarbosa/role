@@ -9,4 +9,4 @@
   </div>
 </mat-toolbar>
 
-<app-role-list *ngIf="roles | async as role" [role]="role"></app-role-list>
+<app-role-list *ngIf="roles$ | async as role" [roles]="role" (edit)="onEdit($event)"></app-role-list>

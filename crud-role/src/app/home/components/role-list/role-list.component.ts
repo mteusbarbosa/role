@@ -1,5 +1,6 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { Role } from '../../model/role.model';
-import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-role-list',
@@ -8,7 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RoleListComponent implements OnInit {
 
-  @Input() role: Role[] = [];
+  @Input() roles: Role[] = [];
+  @Output() edit = new EventEmitter(false);
 
   readonly displayedColumns = [
     '_id',
@@ -25,6 +27,11 @@ export class RoleListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  //Envia o role para o home.component
+  onEdit(role: Role){
+    this.edit.emit(role);
   }
 
 }

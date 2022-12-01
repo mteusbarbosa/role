@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 import { Role } from '../../model/role.model';
 import { RolesService } from '../../services/roles.service';
@@ -12,7 +13,8 @@ import { RolesService } from '../../services/roles.service';
 })
 export class HomeComponent implements OnInit {
   //Precisa inicializar no construtor
-  roles: Observable<Role[]>;
+  roles$: Observable<Role[]>;
+  dialog: any;
 
 
   constructor(
@@ -20,8 +22,20 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.roles = this.rolesService.list();
-  }
+    this.roles$ = this.rolesService.list()
+    .pipe(
+      catchError(error => {
+        this.onError('Erro ao carregar cursos.');
+        return of([])
+      })
+    );
+}
+
+onError(errorMsg: string) {
+  this.dialog.open(ErrorDialogComponent, {
+    data: errorMsg
+  });
+}
 
   ngOnInit(): void {
     /** */
@@ -30,5 +44,9 @@ export class HomeComponent implements OnInit {
   //Redirecionamento para formulário de criação
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
+  onEdit(role: Role){
+    this.router.navigate(['edit', role._id], { relativeTo: this.route });
   }
 }
