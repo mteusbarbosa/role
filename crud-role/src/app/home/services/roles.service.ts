@@ -15,8 +15,8 @@ export class RolesService {
 
   //Método GET HTTP - receber os roles do servidor
   list() {
-    return this.httpClient.get<Role[]>(this.API)
-      //.pipe(tap((roles) => console.log(roles)));
+    return this.httpClient.get<Role[]>(this.API);
+    //.pipe(tap((roles) => console.log(roles)));
   }
 
   //Método POST HTTP - criar um role
@@ -40,5 +40,10 @@ export class RolesService {
       return this.update(record);
     }
     return this.create(record);
+  }
+
+  //Deletar um role
+  remove(id: string) {
+    return this.httpClient.delete(`${this.API}/${id}`);
   }
 }

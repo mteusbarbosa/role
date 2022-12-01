@@ -9,13 +9,15 @@
           <mat-card-subtitle>
             {{ role.local }}
           </mat-card-subtitle>
+
           <!-- Editar role -->
           <button mat-icon-button color="accent" aria-label="Editar role">
             <mat-icon (click)="onEdit(role)">edit</mat-icon>
           </button>
-          <!-- Remover role -->
+
+          <!-- Deletar role -->
           <button mat-icon-button color="accent" aria-label="Remover role">
-            <mat-icon>delete</mat-icon>
+            <mat-icon (click)="onDelete(role)">delete</mat-icon>
           </button>
         </mat-card-header>
 

@@ -11,6 +11,7 @@ export class RoleListComponent implements OnInit {
 
   @Input() roles: Role[] = [];
   @Output() edit = new EventEmitter(false);
+  @Output() delete = new EventEmitter(false);
 
   readonly displayedColumns = [
     '_id',
@@ -31,6 +32,10 @@ export class RoleListComponent implements OnInit {
 
   //Envia o role para o home.component
   onEdit(role: Role){
+    this.edit.emit(role);
+  }
+
+  onDelete(role: Role){
     this.edit.emit(role);
   }
 
