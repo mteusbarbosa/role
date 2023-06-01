@@ -1,0 +1,3 @@
+server/node_modules/*
+server/.vscode
+web/.vscode
